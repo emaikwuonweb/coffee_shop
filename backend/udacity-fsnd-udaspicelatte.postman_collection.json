@@ -1,0 +1,608 @@
+{
+	"info": {
+		"_postman_id": "a0e18990-b63b-4f73-a61e-a336c1d42ecd",
+		"name": "Coffe Shop",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4401916"
+	},
+	"item": [
+		{
+			"name": "Barista",
+			"item": [
+				{
+					"name": "Get All Drinks",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status code is 200', function() {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Should return the expected json response\", function() {\r",
+									"    pm.response.to.have.jsonBody\r",
+									"    pm.response.json['success']\r",
+									"    pm.response.json['drinks']\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Should return the right data type for drinks and success\", function() {\r",
+									"    pm.expect(typeof(pm.response.json()['success'])).to.equal('boolean')\r",
+									"    pm.expect(typeof(pm.response.json()['drinks'])).to.equal('object')\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/drinks",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"drinks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Drinks Details",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status code is 200', function() {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Should return the expected json response\", function() {\r",
+									"    pm.response.to.have.jsonBody\r",
+									"    pm.response.json['success']\r",
+									"    pm.response.json['drinks']\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Should return the right data type for drinks and success\", function() {\r",
+									"    pm.expect(typeof(pm.response.json()['success'])).to.equal('boolean')\r",
+									"    pm.expect(typeof(pm.response.json()['drinks'])).to.equal('object')\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlpQek1TdG5EZ1FCNDFwYmNFUVNJVyJ9.eyJpc3MiOiJodHRwczovL2Rldi02dzRrMXYzcS51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NjMyNGQ4YjM0NWQ3NTliYjQzNThlYmYxIiwiYXVkIjoiZGV2IiwiaWF0IjoxNjYzODEwMzQ0LCJleHAiOjE2NjM4MTc1NDQsImF6cCI6ImV4M2FuWnR6N2FIb0J0eFRKanU4MWxyeDBZU0NxMlBUIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6ZHJpbmtzIiwiZ2V0OmRyaW5rcyIsImdldDpkcmlua3MtZGV0YWlsIiwicGF0Y2g6ZHJpbmtzIiwicG9zdDpkcmlua3MiXX0.QOFE6lX7kzNqYgG3eJZUjtgZeVksCnAQQWC_ZUo7eNGojkyZv9ITXrn4eFpvumUwujnjdu9Rx1iNANOOeciibJe3poYAdb7Q5B4bxmCnxmFQKu9fV-xhixesvrHpCdGbbOMSF1gVtH3R-9UCMhb0PYsmEA0kUrmb3PWRdbGRAigC8Mx9nadT_pVzc8ICngPdCb_MCxjKXGDrfG3HYd-qm2K3JO1W17JMPu9sfmxrM7rrjH4k7ufGP1x_LxUoqSPMxqsERdmvHXlzAeob_GiJq7SrtNkMza2IC7b57Xq1F6REk4m0cbVIot0Ky6qrlR5svVgELy0ijlpDNWStuKfpdg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/drinks-detail",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"drinks-detail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Drinks Details No Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status code is 401', function() {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/drinks-detail",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"drinks-detail"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Manager",
+			"item": [
+				{
+					"name": "Get All Drinks",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status code is 200', function() {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Should return the expected json response\", function() {\r",
+									"    pm.response.to.have.jsonBody\r",
+									"    pm.response.json['success']\r",
+									"    pm.response.json['drinks']\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Should return the right data type for drinks and success\", function() {\r",
+									"    pm.expect(typeof(pm.response.json()['success'])).to.equal('boolean')\r",
+									"    pm.expect(typeof(pm.response.json()['drinks'])).to.equal('object')\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/drinks",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"drinks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Drinks Details",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status code is 200', function() {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Should return the expected json response\", function() {\r",
+									"    pm.response.to.have.jsonBody\r",
+									"    pm.response.json['success']\r",
+									"    pm.response.json['drinks']\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Should return the right data type for drinks and success\", function() {\r",
+									"    pm.expect(typeof(pm.response.json()['success'])).to.equal('boolean')\r",
+									"    pm.expect(typeof(pm.response.json()['drinks'])).to.equal('object')\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlpQek1TdG5EZ1FCNDFwYmNFUVNJVyJ9.eyJpc3MiOiJodHRwczovL2Rldi02dzRrMXYzcS51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NjMyNGQ4YjM0NWQ3NTliYjQzNThlYmYxIiwiYXVkIjoiZGV2IiwiaWF0IjoxNjYzODEyNjUyLCJleHAiOjE2NjM4MTk4NTIsImF6cCI6ImV4M2FuWnR6N2FIb0J0eFRKanU4MWxyeDBZU0NxMlBUIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6ZHJpbmtzIiwiZ2V0OmRyaW5rcyIsImdldDpkcmlua3MtZGV0YWlsIiwicGF0Y2g6ZHJpbmtzIiwicG9zdDpkcmlua3MiXX0.RuWTX7s3Wnd-tEPKmGVngOMwj2kyRtiZ8ThvWcMQY4dxT_nO1CyB3ORzQOaipMUHSsCrBPFm9YIw7WsvptXKcfXm1GsvRn38tsE-dNyhstNFykbhqkqvC9k3ji77VUKAVRXtduWibMA169__cmeNuxqqwhL3pPF1mvszwOO1EU8nI66n58pIEfttBRmBdypZr5vOXSFIYpvSMxCjMXDNCuSw_za7OQpoCeRq6CydYa1rQo9o1EHtDMy8gn11oeaKPSQXvwEljkmO-rAI8v0uzGfGoTwERqa5obp7rnxs_4SdVnzm_DjNfm22h41SHVJ-j38fw4swNZaP2d1-GLzrGg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/drinks-detail",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"drinks-detail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Drink",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Should return 201 status code', function() {\r",
+									"    pm.response.to.have.status(201)\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Should return the expected json response\", function() {\r",
+									"    pm.response.to.have.jsonBody\r",
+									"    pm.response.json['success']\r",
+									"    pm.response.json['drinks']\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Should return the right data type for drinks and success\", function() {\r",
+									"    pm.expect(typeof(pm.response.json()['success'])).to.equal('boolean')\r",
+									"    pm.expect(typeof(pm.response.json()['drinks'])).to.equal('object')\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlpQek1TdG5EZ1FCNDFwYmNFUVNJVyJ9.eyJpc3MiOiJodHRwczovL2Rldi02dzRrMXYzcS51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NjMyNGQ4YjM0NWQ3NTliYjQzNThlYmYxIiwiYXVkIjoiZGV2IiwiaWF0IjoxNjYzODEyNjUyLCJleHAiOjE2NjM4MTk4NTIsImF6cCI6ImV4M2FuWnR6N2FIb0J0eFRKanU4MWxyeDBZU0NxMlBUIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6ZHJpbmtzIiwiZ2V0OmRyaW5rcyIsImdldDpkcmlua3MtZGV0YWlsIiwicGF0Y2g6ZHJpbmtzIiwicG9zdDpkcmlua3MiXX0.RuWTX7s3Wnd-tEPKmGVngOMwj2kyRtiZ8ThvWcMQY4dxT_nO1CyB3ORzQOaipMUHSsCrBPFm9YIw7WsvptXKcfXm1GsvRn38tsE-dNyhstNFykbhqkqvC9k3ji77VUKAVRXtduWibMA169__cmeNuxqqwhL3pPF1mvszwOO1EU8nI66n58pIEfttBRmBdypZr5vOXSFIYpvSMxCjMXDNCuSw_za7OQpoCeRq6CydYa1rQo9o1EHtDMy8gn11oeaKPSQXvwEljkmO-rAI8v0uzGfGoTwERqa5obp7rnxs_4SdVnzm_DjNfm22h41SHVJ-j38fw4swNZaP2d1-GLzrGg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"cee\",\r\n    \"recipe\": [{\"name\": \"water\", \"color\": \"#d3b894\", \"parts\": 1}]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/drinks",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"drinks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Drink No Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Should return 401 status code', function() {\r",
+									"    pm.response.to.have.status(401)\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"cee\",\r\n    \"recipe\": [{\"name\": \"water\", \"color\": \"#d3b894\", \"parts\": 1}]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/drinks",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"drinks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Drinks",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Should return 200 status code', function() {\r",
+									"    pm.response.to.have.status(200)\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Should return the expected json response\", function() {\r",
+									"    pm.response.to.have.jsonBody\r",
+									"    pm.response.json['success']\r",
+									"    pm.response.json['drinks']\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Should return the right data type for drinks and success\", function() {\r",
+									"    pm.expect(typeof(pm.response.json()['success'])).to.equal('boolean')\r",
+									"    pm.expect(typeof(pm.response.json()['drinks'])).to.equal('object')\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlpQek1TdG5EZ1FCNDFwYmNFUVNJVyJ9.eyJpc3MiOiJodHRwczovL2Rldi02dzRrMXYzcS51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NjMyNGQ4YjM0NWQ3NTliYjQzNThlYmYxIiwiYXVkIjoiZGV2IiwiaWF0IjoxNjYzODEyNjUyLCJleHAiOjE2NjM4MTk4NTIsImF6cCI6ImV4M2FuWnR6N2FIb0J0eFRKanU4MWxyeDBZU0NxMlBUIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6ZHJpbmtzIiwiZ2V0OmRyaW5rcyIsImdldDpkcmlua3MtZGV0YWlsIiwicGF0Y2g6ZHJpbmtzIiwicG9zdDpkcmlua3MiXX0.RuWTX7s3Wnd-tEPKmGVngOMwj2kyRtiZ8ThvWcMQY4dxT_nO1CyB3ORzQOaipMUHSsCrBPFm9YIw7WsvptXKcfXm1GsvRn38tsE-dNyhstNFykbhqkqvC9k3ji77VUKAVRXtduWibMA169__cmeNuxqqwhL3pPF1mvszwOO1EU8nI66n58pIEfttBRmBdypZr5vOXSFIYpvSMxCjMXDNCuSw_za7OQpoCeRq6CydYa1rQo9o1EHtDMy8gn11oeaKPSQXvwEljkmO-rAI8v0uzGfGoTwERqa5obp7rnxs_4SdVnzm_DjNfm22h41SHVJ-j38fw4swNZaP2d1-GLzrGg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Js Cofe\",\r\n    \"recipe\":  [{\"name\": \"sugar\", \"color\": \"black\", \"parts\": 1}]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/drinks/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"drinks",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Drinks No Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Should return 401 status code', function() {\r",
+									"    pm.response.to.have.status(401)\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Js Coffee\",\r\n    \"recipe\":  [{\"name\": \"sugar\", \"color\": \"black\", \"parts\": 1}]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/drinks/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"drinks",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Drink",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Should return 200 status code', function() {\r",
+									"    pm.response.to.have.status(200)\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Should return the expected json response\", function() {\r",
+									"    pm.response.to.have.jsonBody\r",
+									"    pm.response.json['delete']\r",
+									"    pm.response.json['success']\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Should return the right data type for drinks and success\", function() {\r",
+									"    pm.expect(typeof(pm.response.json()['delete'])).to.equal('number')\r",
+									"    pm.expect(typeof(pm.response.json()['success'])).to.equal('boolean')\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlpQek1TdG5EZ1FCNDFwYmNFUVNJVyJ9.eyJpc3MiOiJodHRwczovL2Rldi02dzRrMXYzcS51cy5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NjMyNGQ4YjM0NWQ3NTliYjQzNThlYmYxIiwiYXVkIjoiZGV2IiwiaWF0IjoxNjYzODEyNjUyLCJleHAiOjE2NjM4MTk4NTIsImF6cCI6ImV4M2FuWnR6N2FIb0J0eFRKanU4MWxyeDBZU0NxMlBUIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJkZWxldGU6ZHJpbmtzIiwiZ2V0OmRyaW5rcyIsImdldDpkcmlua3MtZGV0YWlsIiwicGF0Y2g6ZHJpbmtzIiwicG9zdDpkcmlua3MiXX0.RuWTX7s3Wnd-tEPKmGVngOMwj2kyRtiZ8ThvWcMQY4dxT_nO1CyB3ORzQOaipMUHSsCrBPFm9YIw7WsvptXKcfXm1GsvRn38tsE-dNyhstNFykbhqkqvC9k3ji77VUKAVRXtduWibMA169__cmeNuxqqwhL3pPF1mvszwOO1EU8nI66n58pIEfttBRmBdypZr5vOXSFIYpvSMxCjMXDNCuSw_za7OQpoCeRq6CydYa1rQo9o1EHtDMy8gn11oeaKPSQXvwEljkmO-rAI8v0uzGfGoTwERqa5obp7rnxs_4SdVnzm_DjNfm22h41SHVJ-j38fw4swNZaP2d1-GLzrGg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/drinks/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"drinks",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Drink No Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Should return 401 status code', function() {\r",
+									"    pm.response.to.have.status(401)\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/drinks/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"drinks",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

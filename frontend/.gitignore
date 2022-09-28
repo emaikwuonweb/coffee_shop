@@ -1,0 +1,6 @@
+.idea/
+.ionic/
+.sourcemaps/
+.sass-cache/
+node_modules/
+
